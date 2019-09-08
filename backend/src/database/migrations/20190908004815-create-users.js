@@ -10,6 +10,10 @@ module.exports = {
             name: {
                 type: Sequelize.STRING,
                 allowNull: false,
+            },
+            email: {
+                type: Sequelize.STRING,
+                allowNull: false,
                 unique: true,
             },
             password_hash: {
@@ -25,7 +29,7 @@ module.exports = {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
-            updted_at: {
+            updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
