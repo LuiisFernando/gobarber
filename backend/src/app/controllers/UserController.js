@@ -79,6 +79,30 @@ class UserController {
             provider,
         });
     }
+
+    async findById(req, res) {
+        const schema = Yup.object().shape({
+            id: Yup.number()
+                .required()
+                .positive()
+                .integer()
+                .min(1),
+        });
+
+        if (!(await schema.isValid(req.params))) {
+            return res.status(400).json({ error: 'Validation fails' });
+        }
+
+        const { id } = req.params;
+
+        const { name, provider, email } = await User.findByPk(id);
+
+        return res.json({
+            name,
+            provider,
+            email,
+        });
+    }
 }
 
 export default new UserController();
