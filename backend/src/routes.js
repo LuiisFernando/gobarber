@@ -19,6 +19,7 @@ routes.post('/sessions', SessionController.store);
 
 // this routes above need to be authenticated
 routes.use(authMiddleware);
+
 routes.put('/users', UserController.update);
 
 routes.get('/providers', ProviderController.index);

@@ -8,11 +8,11 @@ class App {
     constructor() {
         this.server = express();
 
-        this.middlwares();
+        this.middlewares();
         this.routes();
     }
 
-    middlwares() {
+    middlewares() {
         this.server.use(express.json());
 
         // to server static file on route /files passing the path by parameter
