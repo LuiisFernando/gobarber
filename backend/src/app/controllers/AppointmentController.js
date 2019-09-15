@@ -114,6 +114,7 @@ class AppointmentController {
     }
 
     async delete(req, res) {
+        // getting appointent and including provider
         const appointment = await Appointment.findByPk(req.params.id, {
             include: [
                 {
@@ -121,15 +122,22 @@ class AppointmentController {
                     as: 'provider',
                     attributes: ['name', 'email'],
                 },
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['name', 'email'],
+                },
             ],
         });
 
+        // user can only cancel his appointment
         if (appointment.user_id !== req.userId) {
             return res.status(401).json({
                 error: "You don't have a permission to cancel this appointment",
             });
         }
 
+        // subtract 2 hours of appointment.date
         const dateWithSub = subHours(appointment.date, 2);
 
         if (isBefore(dateWithSub, new Date())) {
@@ -142,10 +150,22 @@ class AppointmentController {
 
         await appointment.save();
 
+        // send email to provider
         await Mail.sendMail({
             to: `${appointment.provider.name} <${appointment.provider.email}>`,
             subject: 'Agendamento cancelado',
-            text: 'Você tem um novo cancelamento',
+            template: 'cancelation',
+            context: {
+                provider: appointment.provider.name,
+                user: appointment.user.name,
+                date: format(
+                    appointment.date,
+                    "'dia' dd 'de' MMMM', às' H:mm'h'",
+                    {
+                        locale: pt,
+                    }
+                ),
+            },
         });
 
         return res.json(appointment);
