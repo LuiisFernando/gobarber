@@ -16,6 +16,11 @@ pg
 pg-hstore
 sequelize
 yup
+sentry/node
+youch
+bee-queue
+express-async-errors
+dotenv
 ```
 
 
