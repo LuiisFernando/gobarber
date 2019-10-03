@@ -24,4 +24,4 @@ dotenv
 ```
 
 
-authentication with jsonwebtoke and encrypting passwords in bcryptjs, using Sequelize as ORM and  connecting with mongodb andusing mongoose to create models sending email with nodemailer
+authentication with jsonwebtoke and encrypting passwords in bcryptjs, using Sequelize as ORM and  connecting with mongodb andusing mongoose to create models sending email with nodemailer.
