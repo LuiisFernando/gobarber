@@ -35,7 +35,6 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    console.log("chegou no sagas");
     const { name, email, password } = payload;
     yield call(api.post, "users", {
       name,
