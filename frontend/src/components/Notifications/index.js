@@ -16,7 +16,7 @@ import {
 export default function Notifications() {
   const [visible, setVisible] = useState(false);
   const [notifications, setNotifications] = useState([]);
-
+  const botao = React.createRef();
   const hasUnread = useMemo(
     () => !!notifications.find(notification => notification.read === false),
     [notifications]
@@ -58,7 +58,7 @@ export default function Notifications() {
   return (
     <Container>
       <Badge onClick={handleToggleVisible} hasUnread={hasUnread}>
-        <MdNotifications color="#7159c1" size={20} />
+        <MdNotifications color={visible ? "#333" : "#7159c1"} size={20} />
       </Badge>
 
       <NotificationList visible={visible}>
