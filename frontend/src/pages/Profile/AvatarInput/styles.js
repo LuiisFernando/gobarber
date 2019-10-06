@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   align-self: center;
-  margin-top: 30px;
+  margin-top: 10px;
 
   label {
     cursor: pointer;
