@@ -8,7 +8,10 @@ import logo from "~/assets/header.svg";
 import { Container, Content, Profile } from "./styles";
 
 export default function Header() {
-  const name = useSelector(state => state.user.profile.name);
+  const profile = useSelector(state => state.user.profile);
+  const foto = profile.avatar
+    ? profile.avatar.url
+    : "https://api.adorable.io/avatars/50/abott@adorable.png";
 
   return (
     <Container>
@@ -21,13 +24,10 @@ export default function Header() {
           <Notifications />
           <Profile>
             <div>
-              <strong>{name}</strong>
+              <strong>{profile.name}</strong>
               <Link to="/profile">Meu Perfil</Link>
             </div>
-            <img
-              src="https://api.adorable.io/avatars/50/abott@adorable.png"
-              alt="Luis"
-            />
+            <img src={foto} alt="perfil" />
           </Profile>
         </aside>
       </Content>
