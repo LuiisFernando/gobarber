@@ -16,10 +16,11 @@ export function* signIn({ payload }) {
     });
 
     const { token, user } = response.data;
+
     if (user.provider) {
-      Alert.Alert(
+      Alert.alert(
         'Erro no login',
-        'O usuário não pode ser pretador de serviços',
+        'O usuário não pode ser prestador de serviços',
       );
       return;
     }
@@ -32,7 +33,7 @@ export function* signIn({ payload }) {
   } catch (err) {
     Alert.alert(
       'Falha na autenticação autenticação',
-      'Houve um erro no login, verifique seus dados',
+      `Houve um erro no login, verifique seus dados ${err}`,
     );
     yield put(signFailure());
   }
