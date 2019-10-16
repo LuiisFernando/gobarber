@@ -21,6 +21,7 @@ export default function Profile() {
   );
 
   function handleSubmit(data) {
+    data.avatar = data.avatar ? profile.avatar.id : 0;
     dispatch(updateProfileRequest(data));
   }
 
