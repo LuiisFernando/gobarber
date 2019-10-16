@@ -19,7 +19,7 @@ export default function Appoitment({ data, onCancel }) {
       <Left>
         <Avatar
           source={{
-            uri: 'https://avatars0.githubusercontent.com/u/1233361?v=4',
+            uri: `https://api.adorable.io/avatars/50/${data.provider.name}.png`,
           }}
         />
 
