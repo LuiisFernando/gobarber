@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  height: 100%;
+  min-height: 100%;
 `;
 
 export const Title = styled.Text`

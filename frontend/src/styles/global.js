@@ -16,10 +16,13 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
+    min-height: 100% !important;
     height: 100%;
   }
   body {
     -webkit-font-smoothing: antialiased;
+    min-height: 100% !important;
+    height: 100%;
   }
   body, input, button {
     font: 14px 'Roboto', sans-serif;
